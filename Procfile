@@ -1,0 +1,2 @@
+release: python main.py
+
