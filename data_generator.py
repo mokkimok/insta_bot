@@ -13,7 +13,7 @@ class Top_of_country():
         print(f'Load {self.country} users page {page}...')
         while page <= 5:
             time.sleep(2)
-            self.url = f'https://www.noxinfluencer.com/instagram-channel-rank/_influencer-rank?country={self.country}&category=all&rankSize=250&type=4&interval=weekly&order=followers&pageNum='
+            self.url = f'https://www.noxinfluencer.com/instagram-channel-rank/_influencer-rank?country={self.country}&category=all&rankSize=1000&type=4&interval=weekly&order=followers&pageNum='
             response = requests.get(self.url + str(page))
             while response.status_code != 200:
                 print(f'Code {response.status_code}. Waiting for retry...')

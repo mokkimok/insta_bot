@@ -43,7 +43,6 @@ def merge_tops():
                      Top_of_country(country=country).get_next_top(), countries)
 
     for profile in heapq.merge(*generators, key=(lambda p: p[1]), reverse=True):
-        print(f'{profile[0]}')
         yield profile
 
 
