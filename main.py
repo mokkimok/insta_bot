@@ -39,7 +39,8 @@ def get_countries_list():
 
 def merge_tops():
     countries = get_countries_list()
-    generators = map(lambda country: Top_of_country(country=country).get_next_top(), countries)
+    generators = map(lambda country:
+                     Top_of_country(country=country).get_next_top(), countries)
 
     for profile in heapq.merge(*generators, key=(lambda p: p[1]), reverse=True):
         print(f'{profile[0]}')

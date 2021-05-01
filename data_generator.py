@@ -32,13 +32,12 @@ class Top_of_country():
                 })
                 followers_rank = followers_items[1].get_text()
                 followers = followers_rank.strip().split(' ')[0]
-                if 'K' in followers or 'M' in followers:
-                    if followers[-1] == 'K':
-                        followers = float(followers[:-1]) * 1000
-                    elif followers[-1] == 'M':
-                        followers = float(followers[:-1]) * 1000000
-                    else:
-                        followers = float(followers)
+                if 'K' in followers:
+                    followers = float(followers[:-1]) * 1000
+                elif 'M' in followers:
+                    followers = float(followers[:-1]) * 1000000
+                else:
+                    followers = float(followers)
                 profiles.append((username, int(followers)))
             if not profiles:
                 break
