@@ -7,8 +7,6 @@ class Top_of_country():
     def __init__(self, country):
         self.country = country
         self.generator = self.get_next_top()
-        self.top_user = None
-        self.followers = None
 
     def get_next_top(self):
         page = 1
@@ -46,8 +44,6 @@ class Top_of_country():
                 break
             n = 0
             while n < len(profiles):
-                self.top_user = profiles[n][0]
-                self.followers = profiles[n][1]
                 yield profiles[n]
                 n += 1
             page += 1

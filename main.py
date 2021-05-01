@@ -52,7 +52,7 @@ def main():
         parsed += 1
         with conn.cursor() as cursor:
             cursor.execute(f'INSERT INTO USERNAMES (USERNAME)'
-                           f'VALUES (\'{profile.top_user}\');')
+                           f'VALUES (\'{profile[0]}\');')
             conn.commit()
         print(f'Add user {parsed}: {profile[0]} '
               f'({profile[1]} followers.)')
