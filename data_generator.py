@@ -7,13 +7,13 @@ class Top_of_country():
     def __init__(self, country):
         self.country = country
         self.generator = self.get_next_top()
+        self.url = f'https://www.noxinfluencer.com/instagram-channel-rank/_influencer-rank?country={country}&category=all&rankSize=1000&type=4&interval=weekly&order=followers&pageNum='
 
     def get_next_top(self):
         page = 1
         print(f'Load {self.country} users page {page}...')
-        while page <= 5:
+        while True:
             time.sleep(2)
-            self.url = f'https://www.noxinfluencer.com/instagram-channel-rank/_influencer-rank?country={self.country}&category=all&rankSize=1000&type=4&interval=weekly&order=followers&pageNum='
             response = requests.get(self.url + str(page))
             while response.status_code != 200:
                 print(f'Code {response.status_code}. Waiting for retry...')
