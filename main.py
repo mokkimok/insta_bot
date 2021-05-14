@@ -8,22 +8,22 @@ from bs4 import BeautifulSoup
 from bot import bot
 from data_generator import Top_of_country
 
-# DATABASE_URL = os.environ['DATABASE_URL']
-#
-# db_info = dj_database_url.config(default=DATABASE_URL)
-#
-# conn = psycopg2.connect(database=db_info.get('NAME'),
-#                         user=db_info.get('USER'),
-#                         password=db_info.get('PASSWORD'),
-#                         host=db_info.get('HOST'),
-#                         port=db_info.get('PORT'))
-# 
-# cursor = conn.cursor()
-#
-# cursor.execute('''CREATE TABLE USERNAMES(
-#                  ID SERIAL PRIMARY KEY,
-#                  USERNAME VARCHAR(255) NOT NULL);''')
-# conn.commit()
+DATABASE_URL = os.environ['DATABASE_URL']
+
+db_info = dj_database_url.config(default=DATABASE_URL)
+
+conn = psycopg2.connect(database=db_info.get('NAME'),
+                        user=db_info.get('USER'),
+                        password=db_info.get('PASSWORD'),
+                        host=db_info.get('HOST'),
+                        port=db_info.get('PORT'))
+
+cursor = conn.cursor()
+
+cursor.execute('''CREATE TABLE USERNAMES(
+                 ID SERIAL PRIMARY KEY,
+                 USERNAME VARCHAR(255) NOT NULL);''')
+conn.commit()
 
 
 def get_countries_list():
@@ -47,18 +47,18 @@ def merge_tops():
 
 
 def main():
-    # parsed = 0
-    # for profile in merge_tops():
-    #     parsed += 1
-    #     with conn.cursor() as cursor:
-    #         cursor.execute(f'INSERT INTO USERNAMES (USERNAME)'
-    #                        f'VALUES (\'{profile[0]}\');')
-    #         conn.commit()
-    #     print(f'Add user {parsed}: {profile[0]} '
-    #           f'({profile[1]} followers.)')
-    #
-    #     if parsed == 5000:
-    #         break
+    parsed = 0
+    for profile in merge_tops():
+        parsed += 1
+        with conn.cursor() as cursor:
+            cursor.execute(f'INSERT INTO USERNAMES (USERNAME)'
+                           f'VALUES (\'{profile[0]}\');')
+            conn.commit()
+        print(f'Add user {parsed}: {profile[0]} '
+              f'({profile[1]} followers.)')
+
+        if parsed == 5000:
+            break
 
     bot.polling(none_stop=True, interval=0)
 
