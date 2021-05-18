@@ -8,7 +8,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 
 db_info = dj_database_url.config(default=DATABASE_URL)
 
-bot = telebot.TeleBot('1757542734:AAF2DqXowSHFn7vnG0tuaUleHbOCzwBf6aM')
+bot = telebot.TeleBot('1834793761:AAHNZ9Gd_memSXlXL2vxphAcTsZsMkT7eJM')
 
 
 @bot.message_handler(commands=['start', 'help'])

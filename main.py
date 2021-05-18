@@ -8,22 +8,22 @@ from bs4 import BeautifulSoup
 from bot import bot
 from data_generator import Top_of_country
 
-DATABASE_URL = os.environ['DATABASE_URL']
-
-db_info = dj_database_url.config(default=DATABASE_URL)
-
-conn = psycopg2.connect(database=db_info.get('NAME'),
-                        user=db_info.get('USER'),
-                        password=db_info.get('PASSWORD'),
-                        host=db_info.get('HOST'),
-                        port=db_info.get('PORT'))
-
-cursor = conn.cursor()
-
-cursor.execute('''CREATE TABLE USERNAMES(
-                 ID SERIAL PRIMARY KEY,
-                 USERNAME VARCHAR(255) NOT NULL);''')
-conn.commit()
+# DATABASE_URL = os.environ['DATABASE_URL']
+#
+# db_info = dj_database_url.config(default=DATABASE_URL)
+#
+# conn = psycopg2.connect(database=db_info.get('NAME'),
+#                         user=db_info.get('USER'),
+#                         password=db_info.get('PASSWORD'),
+#                         host=db_info.get('HOST'),
+#                         port=db_info.get('PORT'))
+#
+# cursor = conn.cursor()
+#
+# cursor.execute('''CREATE TABLE USERNAMES(
+#                  ID SERIAL PRIMARY KEY,
+#                  USERNAME VARCHAR(255) NOT NULL);''')
+# conn.commit()
 
 
 def get_countries_list():
@@ -60,8 +60,7 @@ def main():
         if parsed == 5000:
             break
 
-    bot.polling(none_stop=True, interval=0)
-
 
 if __name__ == "__main__":
-    main()
+    # main()
+    bot.polling(none_stop=True, interval=0)
